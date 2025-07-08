@@ -7,7 +7,7 @@ you don't really know JS, I made some tutorials that walk you through some of th
 
 - [Multiselect Machine Functions]{@tutorial multiselect} - Documents functions that process one or more questions
 that allow the user to select multiple items. Such as:
-    - [3D Printers]{@link FormInput.Machines.MultiSelect.threedp}
+    - [3D Printers]{@link FormInput.Machines.MultiSelect.threeDp}
     - [Sewing/Embroidery Machines]{@link FormInput.Machines.MultiSelect.sewing}
     - View the [Multiselect namespace]{@link FormInput.Machines.MultiSelect} for the full list.
 - [Single Select Machine Functions]{@tutorial singleselect} - Documents functions that process questions that

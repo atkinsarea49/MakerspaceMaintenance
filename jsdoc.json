@@ -1,6 +1,6 @@
 {
     "source": {
-        "include": ["src", "README.md", "package.json", "makerspaceMachines.js", "sendEmail.js", "/www", "/node_modules"]
+        "include": ["src", "README.md", "package.json", "makerspaceMachines.js", "sendEmail.js", ".\\tutorials"]
     },
 
     "opts": {
