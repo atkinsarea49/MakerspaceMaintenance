@@ -1,0 +1,940 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Namespace: SingleSelect</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Namespace: SingleSelect</h1>
+
+    
+
+
+
+
+<section>
+
+<header>
+    
+        <h2>
+            <span class="ancestors"><a href="FormInput.html">FormInput</a><a href="FormInput.Machines.html">.Machines</a>.</span>SingleSelect</h2>
+        
+    
+</header>
+
+<article>
+    <div class="container-overview">
+    
+        
+            <div class="description">Machine functions that only allow the user to input one selection per question.See the <a href="tutorial-singleselect.html">Single Select Machine Functions Tutorial</a> for a breakdown of how multiselect machine functions work.</div>
+        
+
+        
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="makerspaceMachines.js.html">makerspaceMachines.js</a>, <a href="makerspaceMachines.js.html#line38">line 38</a>
+    </li></ul></dd>
+    
+
+    
+    <dt class="tag-tutorial">Tutorials:</dt>
+    <dd class="tag-tutorial">
+        <ul>
+            <li><a href="tutorial-singleselect.html">Single Select Machine Functions</a></li>
+        </ul>
+    </dd>
+    
+
+    
+
+    
+</dl>
+
+
+        
+    
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+        <h3 class="subsection-title">Methods</h3>
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id=".cricut"><span class="type-signature">(static) </span>cricut<span class="signature">(json, sheet<span class="signature-attributes">opt</span>)</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Function that puts the form submission information into the Cricut sheet. This function is a [Single Select Machine Function]<a href="FormInput.Machines.SingleSelect.html">FormInput.Machines.SingleSelect</a>. To see a breakdown on how these functions work, see the <a href="tutorial-singleselect.html">Single Select Machine Functions Tutorial</a>.
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+        <th>Default</th>
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>json</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="global.html#JSON">JSON</a></span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                </td>
+            
+
+            <td class="description last">The json entry to parse</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>sheet</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="global.html#Sheet">Sheet</a></span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    SpreadsheetApp.openById('1-tGHaenj-Wmg0LO4etFXQW6cpYALspl6ADAzA9Byt9E').getSheetByName("Cricut")
+                
+                </td>
+            
+
+            <td class="description last">The spreadsheet that we are going to use. The default value can be overridden by passing adifferent sheet. You probably won't have to do this.</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="makerspaceMachines.js.html">makerspaceMachines.js</a>, <a href="makerspaceMachines.js.html#line298">line 298</a>
+    </li></ul></dd>
+    
+
+    
+    <dt class="tag-tutorial">Tutorials:</dt>
+    <dd class="tag-tutorial">
+        <ul>
+            <li><a href="tutorial-singleselect.html">Single Select Machine Functions</a></li>
+        </ul>
+    </dd>
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id=".laser"><span class="type-signature">(static) </span>laser<span class="signature">(json, sheet<span class="signature-attributes">opt</span>)</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Function that puts the form submission information into the laser cutter sheet. This function is a [Single Select Machine Function]<a href="FormInput.Machines.SingleSelect.html">FormInput.Machines.SingleSelect</a>. To see a breakdown on how these functions work, see the <a href="tutorial-singleselect.html">Single Select Machine Functions Tutorial</a>.
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+        <th>Default</th>
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>json</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="global.html#JSON">JSON</a></span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                </td>
+            
+
+            <td class="description last">The json entry to parse</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>sheet</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="global.html#Sheet">Sheet</a></span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    SpreadsheetApp.openById('1-tGHaenj-Wmg0LO4etFXQW6cpYALspl6ADAzA9Byt9E').getSheetByName("Laser Cutter")
+                
+                </td>
+            
+
+            <td class="description last">The spreadsheet that we are going to use. The default value can be overridden by passing adifferent sheet. You probably won't have to do this.</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="makerspaceMachines.js.html">makerspaceMachines.js</a>, <a href="makerspaceMachines.js.html#line85">line 85</a>
+    </li></ul></dd>
+    
+
+    
+    <dt class="tag-tutorial">Tutorials:</dt>
+    <dd class="tag-tutorial">
+        <ul>
+            <li><a href="tutorial-multiselect.html">Multiselect Machine Functions</a></li>
+        </ul>
+    </dd>
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id=".serger"><span class="type-signature">(static) </span>serger<span class="signature">(json, sheet<span class="signature-attributes">opt</span>)</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Function that puts the form submission information into the serger sheet. This function is a [Single Select Machine Function]<a href="FormInput.Machines.SingleSelect.html">FormInput.Machines.SingleSelect</a>. To see a breakdown on how these functions work, see the <a href="tutorial-singleselect.html">Single Select Machine Functions Tutorial</a>.
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+        <th>Default</th>
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>json</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="global.html#JSON">JSON</a></span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                </td>
+            
+
+            <td class="description last">The json entry to parse</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>sheet</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="global.html#Sheet">Sheet</a></span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    SpreadsheetApp.openById('1-tGHaenj-Wmg0LO4etFXQW6cpYALspl6ADAzA9Byt9E').getSheetByName("Serger")
+                
+                </td>
+            
+
+            <td class="description last">The spreadsheet that we are going to use. The default value can be overridden by passing adifferent sheet. You probably won't have to do this.</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="makerspaceMachines.js.html">makerspaceMachines.js</a>, <a href="makerspaceMachines.js.html#line401">line 401</a>
+    </li></ul></dd>
+    
+
+    
+    <dt class="tag-tutorial">Tutorials:</dt>
+    <dd class="tag-tutorial">
+        <ul>
+            <li><a href="tutorial-singleselect.html">Single Select Machine Functions</a></li>
+        </ul>
+    </dd>
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id=".vinyl"><span class="type-signature">(static) </span>vinyl<span class="signature">(json, sheet<span class="signature-attributes">opt</span>)</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Function that puts the form submission information into the vinyl cutter sheet. This function is a [Single Select Machine Function]<a href="FormInput.Machines.SingleSelect.html">FormInput.Machines.SingleSelect</a>. To see a breakdown on how these functions work, see the <a href="tutorial-singleselect.html">Single Select Machine Functions Tutorial</a>.
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+        <th>Default</th>
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>json</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="global.html#JSON">JSON</a></span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                </td>
+            
+
+            <td class="description last">The json entry to parse</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>sheet</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="global.html#Sheet">Sheet</a></span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    SpreadsheetApp.openById('1-tGHaenj-Wmg0LO4etFXQW6cpYALspl6ADAzA9Byt9E').getSheetByName("Vinyl Cutter")
+                
+                </td>
+            
+
+            <td class="description last">The spreadsheet that we are going to use. The default value can be overridden by passing adifferent sheet. You probably won't have to do this.</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="makerspaceMachines.js.html">makerspaceMachines.js</a>, <a href="makerspaceMachines.js.html#line255">line 255</a>
+    </li></ul></dd>
+    
+
+    
+    <dt class="tag-tutorial">Tutorials:</dt>
+    <dd class="tag-tutorial">
+        <ul>
+            <li><a href="tutorial-singleselect.html">Single Select Machine Functions</a></li>
+        </ul>
+    </dd>
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+    
+
+    
+
+    
+</article>
+
+</section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Namespaces</h3><ul><li><a href="FormInput.html">FormInput</a></li><li><a href="FormInput.Machines.html">Machines</a></li><li><a href="FormInput.Machines.MultiSelect.html">MultiSelect</a></li><li><a href="FormInput.Machines.SingleSelect.html">SingleSelect</a></li><li><a href="SendEmail.html">SendEmail</a></li></ul><h3>Tutorials</h3><ul><li><a href="tutorial-multiselect.html">Multiselect Machine Functions</a></li><li><a href="tutorial-singleselect.html">Single Select Machine Functions</a></li></ul><h3><a href="global.html">Global</a></h3>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.3</a> on Tue Jul 08 2025 16:36:38 GMT-0400 (Eastern Daylight Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

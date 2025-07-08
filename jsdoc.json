@@ -1,0 +1,22 @@
+{
+    "source": {
+        "include": ["src", "README.md", "package.json", "makerspaceMachines.js", "sendEmail.js", "/www", "/node_modules"]
+    },
+
+    "opts": {
+        "encoding": "utf8",
+        "destination": "docs/",
+        "recurse": true,
+        "verbose": true,
+        "template": "./node_modules/clean-jsdoc-theme",
+        "theme_opts": {
+            "default_theme": "dark",
+            "homepageTitle": "Makerspace Maintenance Docs"
+            
+        }
+    },
+    "markdown": {
+        "hardwrap": false, 
+        "idInHeadings": true 
+    }
+}

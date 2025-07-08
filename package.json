@@ -1,0 +1,10 @@
+{
+  "dependencies": {
+    "clean-jsdoc-theme": "^4.3.0",
+    "jsdoc": "^4.0.4"
+  },
+
+  "scripts": {
+    "generate-docs": "jsdoc --configure jsdoc.json --verbose"
+  }
+}

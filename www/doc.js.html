@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: doc.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: doc.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>
+/**
+ * Functions and objects and such that have to do with the form input.
+ * @namespace FormInput
+ */
+
+/**
+ * Functions for each individual machine input.
+ * @namespace Machines
+ * @memberof FormInput
+ */
+
+/**
+ * Machine functions that allow the user to input multiple selections for one or more questions
+ * as opposed to just one. This means that the multiselect questions need to be formatted and
+ * split up so that each selection can have its own entry.
+ * 
+ * @namespace MultiSelect
+ * @memberof Machines
+ * 
+ * ## Structure
+ * 
+ * All of the values we get from the form entry are from the "json" parameter that is passed to
+ * the function
+ * 
+ * ### Range
+ * 
+ * We get the range of spreadsheet cells that we are going to be working with. This is a constant,
+ * meaning that this value will not change. We can then access this value within our function by
+ * calling "range".
+ * 
+ * @example
+ * const range = sheet.getRange('A5:E');
+ * 
+ * ### List
+ * Now we get the list of values that the user selected in the multiselect question.
+ * By using "stringify" on the value, we convert the list from json to a string
+ * (plain text that we can use in the spreadsheet) In this example, the list we are
+ * getting is the list of machines that the user performed the task on, but this 
+ * can vary based on the individual function.
+ * 
+ * @example
+ * var machineList = JSON.stringify([json.values[5]])
+ * 
+ * ### Convert the String to an Array
+ * 
+ * Next we will convert this string to an array, which is basically a single variable
+ * that holds a list of objects instead of just one. Here is an example of an array:
+ * 
+ * ```
+ * const myArray = ["string 1", "string 2", "string 3"]
+ * ```
+ * 
+ * Each object in this array can be accessed by calling the variable name with the index
+ * (the object's number in the sequence, starting with 0).
+ * 
+ * ```
+ * myArray[0] //gives you the value "string 1"
+ * ```
+ * We will use the following code to remove all the characters that will get in the way
+ * of creating a nice, clean array, such as brackets and quotes. 
+ * 
+ * @function replace Looks for the first value, then replaces it with the second value
+ * @function replaceAll Looks for a longer string of values, then replaces it with the second value
+ * 
+ * @example
+ * machineList = machineList.replaceAll(", ", ',');
+ * machineList = machineList.replace("[",'')
+ * machineList = machineList.replace("]", '')
+ * machineList = machineList.replace('"', '')
+ * machineList = machineList.replace('"', '')
+ * 
+ * 
+ */
+
+/**
+ * Machine functions that only allow the user to input one selection per question.
+ * @namespace SingleSelect
+ * @memberof Machines
+ */
+
+/**
+ * This triggers the script to run. You most likely won't have to mess with this.
+ * 
+ * @listens for a form submission
+ * @memberof FormInput
+ */
+function makeTrigger() {
+  const sheet = SpreadsheetApp.getActive();
+  ScriptApp.newTrigger('adder')
+    .forSpreadsheet(sheet)
+    .onFormSubmit()
+    .create();
+}
+
+/**
+ * This is just a fake json entry that I use for testing. If you need to actually make any human sense of this or any other entry, I suggest pasting this into a json linter such as jsonlint.com.
+ * 
+ * All raw json entries are placed in a hidden sheet called "test." You can unhide it if you need to access any of the raw form entries, but please hide it again when you're done.
+ * 
+ * @memberof FormInput
+ * @constant
+ * @default
+ */
+const test = {"authMode":"FULL","namedValues":{"Email Address":["bstenson@charlotte.edu"],"What was the date of the maintenance?":["2/19/2025"],"What did you replace?":[""],"Which sewing/embroidery machine task did you do?":["Bobbin Holder/Feed Dog Cleaning"],"Which printer did you do this on?":[""],"Which CNC did you do this on?":[""],"What machine was this task for?":["Sewing/Embroidery Machines"],"Which serger task did you do?":[""],"Which machine did you do this on?":["Singer QS1, Singer QS2, Singer Heavy Duty, Janome 1, Janome 2, Embroidery Machine"],"Which Cricut task did you do?":[""],"Which vinyl cutter task did you do?":[""],"What laser cutter task did you do?":[""],"Which CNC task did you do?":[""],"Timestamp":["2/19/2025 14:26:44"],"Notes:":[""],"What 3D printer task did you do? ":[""]},"range":{"columnEnd":16,"columnStart":1,"rowEnd":47,"rowStart":47},"source":{},"triggerUid":"-8663804608173561165","values":["2/19/2025 14:26:44","bstenson@charlotte.edu","Sewing/Embroidery Machines","","","","","","","","","Singer QS1, Singer QS2, Singer Heavy Duty, Janome 1, Janome 2, Embroidery Machine","Bobbin Holder/Feed Dog Cleaning","","","2/19/2025"]}
+
+/**
+ * Function that puts the form submission information into the laser cutter sheet.
+ * 
+ * @param json The json entry to parse
+ * @param sheet The spreadsheet that we are going to use
+ * @memberof SingleSelect
+ */
+function laser(json, sheet = SpreadsheetApp.openById('1-tGHaenj-Wmg0LO4etFXQW6cpYALspl6ADAzA9Byt9E').getSheetByName("Laser Cutter")) {
+
+  //The range that this function is able to alter
+  const range = sheet.getRange('A5:D');
+
+  //The starting cell for data input
+  var cell = range.getNextDataCell(SpreadsheetApp.Direction.DOWN).offset(1,0);
+
+  //Set the value of the starting cell to the laser cutter task data that was submitted in the form.
+  cell.setValue([json.namedValues["What laser cutter task did you do?"][0]]);
+  
+  //select the cell to the right of the current cell.
+  cell = cell.offset(0,1);
+
+  //Set the value of this cell to the date that was submitted in the form.
+  cell.setValue([json.namedValues["What was the date of the maintenance?"][0]]);
+  
+  cell = cell.offset(0,1);
+  //Set the value of this cell to the email of the person who submitted in the form.
+  cell.setValue([json.namedValues["Email Address"][0]]);
+  
+  cell = cell.offset(0,1);
+  //Set the value of this cell to the notes that were submitted in the form, if any.  
+  cell.setValue([json.namedValues["Notes:"][0]]);
+  
+  cell = cell.offset(0,1);
+
+};
+
+/**
+ * Function that puts the form submission information into the 3D Printer sheet. 
+ * 
+ * @param json The json entry to parse
+ * @param sheet The spreadsheet that we are going to use
+ * @memberof MultiSelect
+ */
+function threeDp(json, sheet = SpreadsheetApp.openById('1-tGHaenj-Wmg0LO4etFXQW6cpYALspl6ADAzA9Byt9E').getSheetByName("3D Printers")) {
+
+  /**
+   * The range of cells that we are working with.
+   * @constant
+   */
+  const range = sheet.getRange('A5:E');
+
+  /**
+   * The list of machines that the user has selected in the form entry, indicating that they have performed
+   * the task on the listed machines. This is turned into a string (plain text that we can put into the
+   * spreadsheet with a little bit of work).
+   */
+  var machineList = JSON.stringify([json.values[5]])
+
+  //replace all unnecessary characters in the string, then convert it to an array based on where the commas are
+  machineList = machineList.replaceAll(", ", ',');
+  machineList = machineList.replace("[",'')
+  machineList = machineList.replace("]", '')
+  machineList = machineList.replace('"', '')
+  machineList = machineList.replace('"', '')
+  //converts machine list to an array
+  machineList = machineList.split(",")
+
+  //creates a new row for each machine that's listed in machine list.
+  for (machine in machineList) {
+    //gets first cell in next available row
+    var cell = range.getNextDataCell(SpreadsheetApp.Direction.DOWN).offset(1,0);
+
+    //inputs the service
+    cell.setValue([json.values[6]]);
+    //moves on to next cell in row
+    cell = cell.offset(0,1);
+    
+    //gets the indicated machine from the machine list and inputs it
+    cell.setValue(machineList[machine]);
+    cell = cell.offset(0,1);
+
+    cell.setValue([json.namedValues["What was the date of the maintenance?"][0]]);
+    cell = cell.offset(0,1);
+    cell.setValue([json.namedValues["Email Address"][0]]);
+    cell = cell.offset(0,1);
+    cell.setValue([json.namedValues["Notes:"][0]]);
+  }
+
+};
+
+//function that puts the form submission information into the cnc sheet. takes the json data from the submission and the sheet being used. similar in structure to the laser function.
+function cnc(json, sheet = SpreadsheetApp.openById('1-tGHaenj-Wmg0LO4etFXQW6cpYALspl6ADAzA9Byt9E').getSheetByName("CNC Router")) {
+
+  const range = sheet.getRange('A5:E');
+
+  var machineList = JSON.stringify([json.values[7]])
+
+  //replace all unnecessary characters in the string, then convert it to an array based on where the commas are
+  machineList = machineList.replaceAll(", ", ',');
+  machineList = machineList.replace("[",'')
+  machineList = machineList.replace("]", '')
+  machineList = machineList.replace('"', '')
+  machineList = machineList.replace('"', '')
+  //converts machine list to an array
+  machineList = machineList.split(",")
+
+  //creates a new row for each machine that's listed in machine list.
+  for (machine in machineList) {
+    //gets first cell in next available row
+    var cell = range.getNextDataCell(SpreadsheetApp.Direction.DOWN).offset(1,0);
+
+    //inputs the service
+    cell.setValue([json.values[8]]);
+    //moves on to next cell in row
+    cell = cell.offset(0,1);
+    
+    //gets the indicated machine from the machine list and inputs it
+    cell.setValue(machineList[machine]);
+    cell = cell.offset(0,1);
+
+    cell.setValue([json.namedValues["What was the date of the maintenance?"][0]]);
+    cell = cell.offset(0,1);
+    cell.setValue([json.namedValues["Email Address"][0]]);
+    cell = cell.offset(0,1);
+    cell.setValue([json.namedValues["Notes:"][0]]);
+  }
+
+};
+
+//function that puts the form submission information into the vinyl cutter sheet. takes the json data from the submission and the sheet being used. similar in structure to the laser function.
+function vinyl(json, sheet = SpreadsheetApp.openById('1-tGHaenj-Wmg0LO4etFXQW6cpYALspl6ADAzA9Byt9E').getSheetByName("Vinyl Cutter")) {
+
+  const range = sheet.getRange('A5:D');
+
+  var cell = range.getNextDataCell(SpreadsheetApp.Direction.DOWN).offset(1,0);
+
+  cell.setValue([json.namedValues["Which vinyl cutter task did you do?"][0]]);
+  
+  cell = cell.offset(0,1);
+
+  cell.setValue([json.namedValues["What was the date of the maintenance?"][0]]);
+  
+  cell = cell.offset(0,1);
+
+  cell.setValue([json.namedValues["Email Address"][0]]);
+  
+  cell = cell.offset(0,1);
+
+  cell.setValue([json.namedValues["Notes:"][0]]);
+  
+  cell = cell.offset(0,1);
+
+};
+
+//function that puts the form submission information into the cricut sheet. takes the json data from the submission and the sheet being used. similar in structure to the laser function.
+function cricut(json, sheet = SpreadsheetApp.openById('1-tGHaenj-Wmg0LO4etFXQW6cpYALspl6ADAzA9Byt9E').getSheetByName("Cricut")) {
+
+  const range = sheet.getRange('A5:D');
+
+  var cell = range.getNextDataCell(SpreadsheetApp.Direction.DOWN).offset(1,0);
+
+  cell.setValue([json.namedValues["Which Cricut task did you do?"][0]]);
+  
+  cell = cell.offset(0,1);
+
+  cell.setValue([json.namedValues["What was the date of the maintenance?"][0]]);
+  
+  cell = cell.offset(0,1);
+
+  cell.setValue([json.namedValues["Email Address"][0]]);
+  
+  cell = cell.offset(0,1);
+
+  cell.setValue([json.namedValues["Notes:"][0]]);
+  
+  cell = cell.offset(0,1);
+
+};
+
+//function that puts the form submission information into the sewing/embroidery machines sheet. takes the json data from the submission and the sheet being used. similar in structure to the laser function.
+function sewing(json = test, sheet = SpreadsheetApp.openById('1-tGHaenj-Wmg0LO4etFXQW6cpYALspl6ADAzA9Byt9E').getSheetByName("Sewing/Embroidery Machines")) {
+
+  const range = sheet.getRange('A5:E');
+  //list of machines given by the user
+  var machineList = JSON.stringify([json.values[11]])
+
+  //replace all unnecessary characters in the string, then convert it to an array based on where the commas are
+  machineList = machineList.replaceAll(", ", ',');
+  machineList = machineList.replace("[",'')
+  machineList = machineList.replace("]", '')
+  machineList = machineList.replace('"', '')
+  machineList = machineList.replace('"', '')
+  //converts machine list to an array
+  machineList = machineList.split(",")
+
+  //creates a new row for each machine that's listed in machine list.
+  for (machine in machineList) {
+    //gets first cell in next available row
+    var cell = range.getNextDataCell(SpreadsheetApp.Direction.DOWN).offset(1,0);
+    //inputs the service
+    cell.setValue([json.values[12]]);
+    //moves on to next cell in row
+    cell = cell.offset(0,1);
+    
+    //gets the indicated machine from the machine list and inputs it
+    cell.setValue(machineList[machine]);
+    cell = cell.offset(0,1);
+
+    cell.setValue([json.namedValues["What was the date of the maintenance?"][0]]);
+    cell = cell.offset(0,1);
+    cell.setValue([json.namedValues["Email Address"][0]]);
+    cell = cell.offset(0,1);
+    cell.setValue([json.namedValues["Notes:"][0]]);
+  }
+
+};
+
+//function that puts the form submission information into the serger sheet. takes the json data from the submission and the sheet being used. similar in structure to the laser function.
+function serger(json, sheet = SpreadsheetApp.openById('1-tGHaenj-Wmg0LO4etFXQW6cpYALspl6ADAzA9Byt9E').getSheetByName("Serger")) {
+
+  const range = sheet.getRange('A5:D');
+
+  var cell = range.getNextDataCell(SpreadsheetApp.Direction.DOWN).offset(1,0);
+
+  cell.setValue([json.namedValues["Which serger task did you do?"][0]]);
+  
+  cell = cell.offset(0,1);
+
+  cell.setValue([json.namedValues["What was the date of the maintenance?"][0]]);
+  
+  cell = cell.offset(0,1);
+
+  cell.setValue([json.namedValues["Email Address"][0]]);
+  
+  cell = cell.offset(0,1);
+
+  cell.setValue([json.namedValues["Notes:"][0]]);
+  
+  cell = cell.offset(0,1);
+
+};
+
+//function that puts the form submission information into the wide format printer sheet. takes the json data from the submission and the sheet being used. similar in structure to the laser function.
+function wideFormat(json, sheet = SpreadsheetApp.openById('1-tGHaenj-Wmg0LO4etFXQW6cpYALspl6ADAzA9Byt9E').getSheetByName("Wide Format Printer")) {
+
+  const range = sheet.getRange('A5:E');
+
+  var replacementList = JSON.stringify([json.values[14]]);
+
+  //replace all unnecessary characters in the string (such as quotes and brackets, basically anything that's not a comma), then convert it to an array based on where the commas are
+  replacementList = replacementList.replaceAll(", ", ',');
+  replacementList = replacementList.replace('[','');
+  replacementList = replacementList.replace(']', '');
+  replacementList = replacementList.replace('"', '');
+  replacementList = replacementList.replace('"', '');
+  //converts machine list to an array by splitting it at the commas
+  replacementList = replacementList.split(",");
+
+  //for every replacement in the list...
+  for (replacement in replacementList) {
+    //get the first empty cell
+    var cell = range.getNextDataCell(SpreadsheetApp.Direction.DOWN).offset(1,0);
+    //set the value to whatever the replacement was
+    cell.setValue(replacementList[replacement]);
+
+    cell = cell.offset(0,1);
+    //this goes in the quantity column, which keeps track of stock
+    cell.setValue(1);
+    cell = cell.offset(0,1);
+    cell.setValue([json.namedValues["What was the date of the maintenance?"][0]]);
+    cell = cell.offset(0,1);
+    cell.setValue([json.namedValues["Email Address"][0]]);
+    cell = cell.offset(0,1);
+    cell.setValue([json.namedValues["Notes:"][0]]);
+    cell = cell.offset(0,1);
+  };
+
+};
+
+//function that parses the data from the form submission and inputs it into the propper sheet. takes the raw form data as "e"
+function adder(e = test) {
+  //spreadsheet id
+  const id = '1-tGHaenj-Wmg0LO4etFXQW6cpYALspl6ADAzA9Byt9E';
+  //spreadsheet
+  const ss = SpreadsheetApp.openById(id);
+  //sheet name for raw data input
+  var sheetName = 'Test';
+  //sheet used for raw data input
+  const sheet = ss.getSheetByName(sheetName);
+  
+  //create a variable to hold parsed json data from the form submission
+  const jsonString = JSON.stringify(e);
+  //add this parsed data to the raw data sheet
+  sheet.appendRow([jsonString]);
+
+  //using submitted form data, select the correct sheet for data input, then run that sheet's dedicated function
+  switch(e.namedValues["What machine was this task for?"][0]) {
+    case "Laser Cutter":
+      laser(json = e);
+      break;
+    case "3D Printers":
+      threeDp(json = e);
+      break;
+    case "CNC Routers":
+      cnc(json = e);
+      break;
+    case "Vinyl Cutter":
+      vinyl(json = e);
+      break;
+    case "Cricut":
+      cricut(json = e);
+      break;
+    case "Sewing/Embroidery Machines":
+      sewing(json = e);
+      break;
+    case "Serger":
+      serger(json = e);
+      break;
+    case "Wide Format Printer":
+      wideFormat(json = e);
+      break;
+  } 
+}
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Namespaces</h3><ul><li><a href="FormInput.html">FormInput</a></li><li><a href="FormInput.Machines.html">Machines</a></li><li><a href="Machines.SingleSelect.html">SingleSelect</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.3</a> on Tue Jul 08 2025 12:52:04 GMT-0400 (Eastern Daylight Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>
