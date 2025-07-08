@@ -33,7 +33,7 @@
                 }
             ],
             "sections" : ["Tutorials","Namespaces","Global"],
-            "tutorials": "./",
+            "tutorials": "./tutorials",
             "tags": {
                 "dictionaries": ["jsdoc","closure"]
             },
