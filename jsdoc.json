@@ -1,6 +1,6 @@
 {
     "source": {
-        "include": ["src", "README.md", "package.json", "makerspaceMachines.js", "sendEmail.js", ".\\tutorials"]
+        "include": ["README.md", "sendEmail.js", "makerspaceMachines.js", "package.json", "./tutorials"]
     },
 
     "opts": {
@@ -10,6 +10,15 @@
         "recurse": true,
         "verbose": true,
         "template": "./node_modules/clean-jsdoc-theme",
+        "templates" : {
+            "default": {
+                "staticFiles": {
+                    "include" : [
+                        "./tutorials"
+                    ]
+                }
+            }
+        },
         "theme_opts": {
             "default_theme": "dark",
             "homepageTitle": "Makerspace Maintenance Docs",
@@ -23,7 +32,15 @@
                     "link" : "{@tutorial singleselect}"
                 }
             ],
-            "sections" : ["Tutorials","Namespaces","Global"]
+            "sections" : ["Tutorials","Namespaces","Global"],
+            "tutorials": "./",
+            "tags": {
+                "dictionaries": ["jsdoc","closure"]
+            },
+            "plugins": ["plugins/markdown"],
+            "markdown": {
+                "tags": ["tutorials", "type"]
+            }
             
         }
     },
