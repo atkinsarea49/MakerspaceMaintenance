@@ -19,29 +19,18 @@
                 }
             }
         },
+        "tutorials": "./tutorials",
+        "tags": {
+            "dictionaries": ["jsdoc","closure"]
+        },
+        "plugins": ["plugins/markdown"],
+        "markdown": {
+            "tags": ["tutorials", "type"]
+        },
         "theme_opts": {
             "default_theme": "dark",
             "homepageTitle": "Makerspace Maintenance Docs",
-            "menu" : [
-                {
-                    "title" : "Multiselect Machine Functions",
-                    "link": "{@tutorial multiselect}"
-                },
-                {
-                    "title" : "Single Select Machine Functions",
-                    "link" : "{@tutorial singleselect}"
-                }
-            ],
-            "sections" : ["Tutorials","Namespaces","Global"],
-            "tutorials": "./tutorials",
-            "tags": {
-                "dictionaries": ["jsdoc","closure"]
-            },
-            "plugins": ["plugins/markdown"],
-            "markdown": {
-                "tags": ["tutorials", "type"]
-            }
-            
+            "sections" : ["Tutorials","Namespaces","Global"]
         }
     },
     "markdown": {
