@@ -30,7 +30,13 @@
         "theme_opts": {
             "default_theme": "dark",
             "homepageTitle": "Makerspace Maintenance Docs",
-            "sections" : ["Tutorials","Namespaces","Global"]
+            "sections" : ["Tutorials","Namespaces","Global"],
+            "menu": [
+                {
+                    "title":"Home",
+                    "link":"./index.html"
+                }
+            ]
         }
     },
     "markdown": {
