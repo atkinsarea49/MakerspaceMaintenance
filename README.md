@@ -21,9 +21,10 @@ update stuff. Most of the files in this repository are related to the documentat
 actual Google App Script, here are the two files that you will be concerned with:
 - [makerspaceMachines.js]{@link ./makerspaceMachines.js} - This deals with parsing the information from the form and
 adding it to the spreadsheet
-- [sendEmail.js]{@link ./sendEmail.js} - this sends an email to Breck (can be reconfigured to someone else) every day
+- [sendEmail.js]{@link ./sendEmail.js} - This sends an email to Breck (can be reconfigured to someone else) every day
 detailing the maintenance status. You will most likely not need to modify this one, as the functionality is not
 core to the program.
+\n
 Both files are in this repo for backup purposes. You have to copy and paste the code into the Google Apps Script
 that's attached to the spreadsheet. It's annoying, but anything else would be way too complicated for such a
 small project. **Please try to keep both places up to date!**
