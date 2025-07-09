@@ -4,5 +4,8 @@
     },
     "singleselect": {
         "title": "Single Select Machine Functions"
+    },
+    "googlesheets": {
+        "title": "Integrating with Google Sheets"
     }
 }
